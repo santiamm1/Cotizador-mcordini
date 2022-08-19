@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Orden de llenado- MAC Agronegocios</title>
+  <link rel='stylesheet' href='https://bootswatch.com/4/cerulean/bootstrap.css'><link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="./img/logo.png" alt="logo" width="150px">
+      </div>
+      <div class="menu"></div>
+    </nav>
+  </header>
+
+<div class="container col-sm-12 mt-5">
+  <h2 id="titulo-inicial">Orden de llenado de productos</h2>
+  <p class="container mt-5 mb-5"id="leyenda">Para utilizar el siguiente formulario debe completar los campos asignados de forma obligatoria y una vez completados los mismos, se debe hacer click en "Agregar producto". Recuerde que tiene un máximo de 10 productos por consulta.</p>
+<br/>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <form>
+          <label for="capacidadNueva" class="form-label">Capacidad (l)</label>
+          <input type="text" class="form-control" id="capacidadNueva">  
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <form>
+          <label for="superficieNueva" class="form-label">Supuerficie a tratar (ha)</label>
+          <input type="number" class="form-control" id="superficieNueva">       
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <form>
+          <label for="tasa" class="form-label">Tasa de aplicacion (l/ha)</label>
+          <input type="number" class="form-control" id="tasa"><br>
+          
+        </form>
+    </div>
+  </div>
+<div> 
+  
+<div class="seccion-boton">
+    <button type="button" id="btnPrincipal" class="btn btn-primary">Ingresar datos</button>
+</div> 
+</div class="row">  
+  <div class="col-sm-12">
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>Superficie</th>
+          <th>Capacidad</th>
+          <th>Tasa de aplicación</th>
+          <th>Autonomía</th>
+          <th>Cantidad de cargas</th>
+        </tr>
+        <tr>
+          <th><div id="resultado"></div></th>
+          <th><div id="resultado2"></div></th>
+          <th><div id="resultado3"></div></th>
+          <th><div id="resultado4"></div></th>
+          <th><div id="resultado5"></div></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="container">
+    <form action="#" id="addRowForm" name="addproductform">
+              <label for="pName" class=" control-label">Nombre comercial del producto</label>
+              <input type="text" name="pName" class="form-control" id="pName">
+              <label for="dosis" class=" control-label">Dosis</label>
+              <input type="number" step="0.001" name="dosis" class="form-control" id="dosis">
+              <label for="select" class="control-label">Formulación</label>
+              <select class="form-control" id="pQty" name="pQty" required>
+                <option value="1-Polvo mojable">Polvo mojable</option>
+                <option value="2-Gránulo dispersable">Gránulo dispersable</option>
+                <option value="3-Gránulo soluble">Gránulo soluble</option>
+                <option value="4-Líquido floable">Líquido floable</option>
+                <option value="5-Líquido emulsionable">Líquido emulsionable</option>
+                <option value="6-Concentrado emulsionable">Concentrado emulsionable</option>
+                <option value="7-Microemulsión">Microemulsión</option>
+                <option value="8-Líquido soluble">Líquido soluble</option>
+                <option value="9-Polvo soluble">Polvo soluble</option>
+              </select>
+        <div class="seccion-boton">
+                <button type="submit" id="addToTable">Agregar producto</button>
+        </div>  
+      </form>
+    
+</div>
+
+
+  
+  <div class="container">
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>Dosis<a href="#" id="sortAvail"></a></th>
+          <th>Nombre comercial <a href="#" id="sortName"></a></th>
+          <th>Formulación  <a href="#" id="sortQty">&#8661;Orden de llenado</a></th>
+          <th>Producto / carga <a href="#" id="sortId"></a></th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <ul class="pagination pagination-sm" id="pagination">Página</ul>
+    <div class="btn-group btn-group-justified">
+      <a href="#" id="addRow" ></a> 
+      <a href="#" id="delRow" class="btn btn-primary">Borrar filas seleccionadas</a>
+      <!-- a href="#" id="demoData" class="btn btn-success">Demo data</a> -->
+      <a href="#" id="clearTable" class="btn btn-danger">Borrar tabla</a>
+      <button onclick="imprimirPagina()" class="btn btn-secondary">Imprimir página</button>   
+    </div>
+   
+
+  </div>
+     
+
+  
+ 
+<!--   <form action="#" class="hidden"  id="exportTableForm">
+    <fieldset>
+      <legend>Export / import table data</legend>
+      <div class="row">
+        <div class="col-md-10 col-sm-8">
+          <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Data</label>
+              <textarea class="form-control" rows="3" id="textArea"></textarea><grammarly-btn><div data-reactroot="" class="_e725ae-textarea_btn _e725ae-not_focused" style="z-index: 2; transform: translate(409.5px, 47.6px);"><div class="_e725ae-transform_wrap"><div title="Protected by Grammarly" class="_e725ae-status">&nbsp;</div></div></div></grammarly-btn>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4">
+          <br/>
+          <button type="submit" id="importDataBtn" class="btn btn-success  btn-block">Import data from table</button>
+          <button type="submit" id="exportDataBtn" class="btn btn-info  btn-block">Export data to table</button>
+        </div>
+      </div>
+    </fieldset>
+  </form> -->
+<!-- partial -->
+
+<script  src="./script.js"></script>
+<script>
+  function imprimirPagina(){
+    window.print();
+  }
+</script>
+</body>
+</html>
